@@ -14,12 +14,12 @@ end
 
 def self.find (id, db)
     
-    pokemon = db.execute("SELECT * FROM pokemon WHERE id=?", [id])
-    new_pokemon = self.new(pokemon)
-    new_pokemon.id = pokemon[0][0]
-    new_pokemon.name = pokemon[0][1]
-    new_pokemon.type = pokemon[0][2]
-    new_pokemon
+    result = db.execute("SELECT * FROM pokemon WHERE id=?", [id])
+    pokemon = self.new(result)
+    pokemon.id = result[0][0]
+    pokemon.name = result[0][1]
+    pokemon.type = result[0][2]
+    pokemon
 
 
 end
